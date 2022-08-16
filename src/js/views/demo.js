@@ -1,43 +1,41 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, {  useContext } from "react";
+import { Context } from "../store/appContext";
+import { Vehicles } from "../component/Vehicles.jsx";
 import { Link } from "react-router-dom";
 
-import { Context } from "../store/appContext";
-
-import "../../styles/demo.css";
 
 export const Demo = () => {
 	const { store, actions } = useContext(Context);
-
 	return (
-		<div className="container">
-			<ul className="list-group">
-				{store.demo.map((item, index) => {
+		<>
+		<div className="container mb-5 pb-5">
+			<div className="col-12 mt-5 mb-3">
+				<h1 className="title">Vehicles</h1>
+			</div>
+			<div className="row" >
+				{store.vehicles.map((item, index) => {
 					return (
-						<li
-							key={index}
-							className="list-group-item d-flex justify-content-between"
-							style={{ background: item.background }}>
-							<Link to={"/single/" + index}>
-								<span>Link to: {item.title}</span>
-							</Link>
-							{// Conditional render example
-							// Check to see if the background is orange, if so, display the message
-							item.background === "orange" ? (
-								<p style={{ color: item.initial }}>
-									Check store/flux.js scroll to the actions to see the code
-								</p>
-							) : null}
-							<button className="btn btn-success" onClick={() => actions.changeColor(index, "orange")}>
-								Change Color
-							</button>
-						</li>
+						<div key={index} className="col-12 col-md-4">
+							<Vehicles
+								key={index}
+								id={index}
+								url={item.url}
+								name={item.name}
+								model={item.model}
+								length={item.length}
+								consumables={item.consumables}
+							/>
+						</div>
 					);
 				})}
-			</ul>
-			<br />
-			<Link to="/">
-				<button className="btn btn-primary">Back home</button>
+			</div>
+            <Link to="/">
+					<button className="btn btn-primary btn-lg" href="#" type="button">
+					<i className="fas fa-arrow-alt-circle-left"></i>
+					</button>
 			</Link>
 		</div>
+		</>
 	);
 };
+

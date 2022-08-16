@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
+import planetas from "../img/planetas.jpg"
 
 export const PlanetsDetails = () => {
     const { store, actions } = useContext(Context);
@@ -14,7 +15,7 @@ export const PlanetsDetails = () => {
 				<div className="col-12 col-md-6">
 					<img
 						className="img-fluid"
-						src="https://talbottinn.com/wp-content/uploads/2013/11/dummy-image-square.jpg"
+						src={ planetas }
 					/>
 				</div>
 				<div className="col-12 col-md-6 text-center">
@@ -32,40 +33,39 @@ export const PlanetsDetails = () => {
 					</p>
 				</div>
 			</div>
-			<div className="row text-center mb-3">
-				<div className="col-12 col-md-3 border rounded shadow py-3">
+			<div className="row text-center mb-3 border">
+				<div className="col-12 col-md-3 border  py-3">
 					Diameter: {store.planets[params.id].diameter}
 				</div>
-				<div className="col-12 col-md-3 border rounded shadow py-3">
+				<div className="col-12 col-md-3 border  py-3">
 					Population: {store.planets[params.id].population}
 				</div>
-				<div className="col-12 col-md-3 border rounded shadow py-3">
+				<div className="col-12 col-md-3 border  py-3">
 					Terrain: {store.planets[params.id].terrain}
 				</div>
-				<div className="col-12 col-md-3 border rounded shadow py-3">
+				<div className="col-12 col-md-3 border  py-3">
 					Rotation Period: {store.planets[params.id].rotation_period}
 				</div>
-				<div className="col-12 col-md-3 border rounded shadow py-3">
+				<div className="col-12 col-md-3 border  py-3">
 					Orbital period: {store.planets[params.id].orbital_period}
 				</div>
-				<div className="col-12 col-md-3 border rounded shadow py-3">
+				<div className="col-12 col-md-3 border  py-3">
 					Climate: {store.planets[params.id].climate}
 				</div>
-				<div className="col-12 col-md-3 border rounded shadow py-3">
+				<div className="col-12 col-md-3 border  py-3">
 					Gravity: {store.planets[params.id].gravity}
 				</div>
-				<div className="col-12 col-md-3 border rounded shadow py-3">
+				<div className="col-12 col-md-3 border  py-3">
 					Surface Water: {store.planets[params.id].surface_water}
 				</div>
 			</div>
-
-			<div className="row">
-				<Link to="/">
-					<span className="btn btn-dark btn-lg" href="#" role="button">
-						Back home
-					</span>
-				</Link>
-			</div>
+			
+			<Link to="/">
+					<button className="btn btn-primary btn-lg" href="#" type="button">
+					<i className="fas fa-arrow-alt-circle-left"></i>
+					</button>
+			</Link>
+			
 		</div>
 	);
 };

@@ -4,37 +4,30 @@ body {
 
 .navbar-logo {
     height: 40px;
-    margin-left: 300px;
+    margin-left: 100px;
 }
+
 .favorites-nav {
     padding: 10px;
     font-style: none;
 }
-.card {
-    width: 18rem;
-    padding: 10px;
-    margin: 10px;
+
+.container-details {
+    background-color: rgb(116, 187, 188);
+    padding: 15px;
+    margin: 20px;
+    border-radius: 5px;
+}
+
+.fa-trash-can {
+    color: black;
+}
+.card-row {
+    overflow-x: scroll;
     display: flex;
 }
 .favorite-icon {
     display: inline-block;
     margin: 10px;
 }
-.card-img-top {
-    height: 250px;
-    width: 400px;
-}
-.container-details {
-    background-color: white;
-    padding: 15px;
-    margin: 20px;
-    border-radius: 5px;
-}
-.img-fluid {
-width: 600px;
-height: 450px;
-margin: 10px;
-}
-.fa-trash-can {
-    color: black;
-}
+

@@ -1,38 +1,37 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext } from "react";
 import "../../styles/index.css";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
+import personajes2 from "../img/personajes2.jpg";
 
 export const People = (props) => {
   const { store, actions } = useContext(Context);
 
   return (
     <>
-      <div className="people mt-5">
-        <div className="row">
-          <div className="card col">
-            <img className="card-img-top" src="https://talbottinn.com/wp-content/uploads/2013/11/dummy-image-square.jpg"></img>
-            <div className="card-body">
+      <div className="card mx-3 mb-4">
+         <img src={ personajes2 } className="card-img-top" alt="..."/> 
+          <div className="card-body">
               <h5 className="card-title">
-                <strong>Character Name:</strong> {props.name}
+                <strong>{props.name}</strong>
               </h5>
               <p className="card-text">
                 <strong>Gender:</strong> {props.gender}
               </p>
               <p className="card-text">
-                <strong>Height:</strong> {props.height}
+                <strong>Height:</strong> {props.height} Cm
               </p>
               <p className="card-text">
-                <strong>Mass:</strong> {props.mass}
+                <strong>Mass:</strong> {props.mass} Kg
               </p>
               <p className="card-text">
                 <strong>Birth Year:</strong> {props.birth_year}
               </p>
               <div className="row">
-                <div className="col-6">
+                <div className="botones">
                   <Link to={`/PeopleDetails/${props.id}`}>
-                    <div className="btn btn-dark">Learn More</div>
+                    <button className="btn btn-primary" type="button">Ver Detalles</button>
                   </Link>
                   <div className="favorite-icon">
                     <div onClick={() => actions.addFavorite(props.name)}>
@@ -44,8 +43,6 @@ export const People = (props) => {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
       </div>
     </>
   );

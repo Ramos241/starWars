@@ -1,21 +1,22 @@
 import React, { useEffect, useState, useContext } from "react";
-import { People } from "../component/People";
-import { Planets } from "../component/Planets";
+import { People } from "../component/People.jsx";
+import { Planets } from "../component/Planets.jsx";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
+import { Link } from "react-router-dom";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
 	return (
 	<>
-		<div className="container mb-5 pb-5 overflow-hidden">
-			<div className="col-12">
-				<h1 className="category-title">People</h1>
+		<div className="container mb-5 pb-5">
+			<div className="col-12 mt-5 mb-3">
+				<h1 className="title">People</h1>
 			</div>
-			<div className="row overX">
+			<div className="card-row">
 				{store.people.map((item, index) => {
 					return (
-						<div key={index} className="col-12 col-md-6 col-lg-4">
+						<div key={index} className="col-12 col-md-4">
 							<People
 								key={index}
 								id={index}
@@ -29,13 +30,13 @@ export const Home = () => {
 					);
 				})}
 			</div>
-			<div className="col-12 mt-5">
-				<h1 className="category-title">Planets</h1>
+			<div className="col-12 mt-5 mb-3">
+				<h1 className="title">Planets</h1>
 			</div>
-			<div className="row overX">
+			<div className="card-row">
 				{store.planets.map((item, index) => {
 					return (
-						<div key={index} className="col-12 col-md-6 col-lg-4 ">
+						<div key={index} className="col-12 col-md-4">
 							<Planets
 								key={index}
 								id={index}
@@ -50,7 +51,9 @@ export const Home = () => {
 					);
 				})}
 			</div>
+			
 		</div>
 	</>
 	);
 };
+

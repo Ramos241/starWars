@@ -3,25 +3,35 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			planets: [],
 			people: [],
-			favorites: []
+			favorites: [],
+			vehicles: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
+			// exampleFunction: () => {
+			// 	getActions().changeColor(0, "green");
+			// },
 			loadPeople: async () => {
 				const url = "https://swapi.dev/api/people/";
 				let response = await fetch(url);
 				const data = await response.json();
 				setStore({ people: data.results });
 			},
+
 			loadPlanets: async () => {
 				const url = "https://swapi.dev/api/planets/";
 				let response = await fetch(url);
 				const data = await response.json();
 				setStore({ planets: data.results });
 			},
+
+			loadVehicles: async () => {
+				const url = "https://swapi.dev/api/vehicles/";
+				let response = await fetch(url);
+				const data = await response.json();
+				setStore({ vehicles: data.results });
+			},			
+
 			addFavorite: name => {
 				let count = 0;
 				const store = getStore();

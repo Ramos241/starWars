@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
+import personajes2 from "../img/personajes2.jpg";
 
 export const PeopleDetails = props => {
 	const { store, actions } = useContext(Context);
@@ -13,8 +14,8 @@ export const PeopleDetails = props => {
 				<div className="col-12 col-md-6">
 					<img
 						className="img-fluid"
-						src="https://talbottinn.com/wp-content/uploads/2013/11/dummy-image-square.jpg"
-					/>
+						src={ personajes2 }
+					/> 
 				</div>
 				<div className="col-12 col-md-6 text-center">
 					<h1>{store.people[params.id].name}</h1>
@@ -32,36 +33,36 @@ export const PeopleDetails = props => {
 				</div>
 			</div>
 			<div className="row text-center mb-3">
-				<div className="col-12 col-md-3 border rounded shadow py-3">
+				<div className="col-12 col-md-3 border  py-3">
 					Gender: {store.people[params.id].gender}
 				</div>
-				<div className="col-12 col-md-3 border rounded shadow py-3">
+				<div className="col-12 col-md-3 border  py-3">
 					Hair Color: {store.people[params.id].hair_color}
 				</div>
-				<div className="col-12 col-md-3 border rounded shadow py-3">
+				<div className="col-12 col-md-3 border  py-3">
 					Eye Color: {store.people[params.id].eye_color}
 				</div>
-				<div className="col-12 col-md-3 border rounded shadow py-3">
+				<div className="col-12 col-md-3 border  py-3">
 					Mass: {store.people[params.id].mass} kg
 				</div>
-				<div className="col-12 col-md-4 border rounded shadow py-3">
+				<div className="col-12 col-md-4 border  py-3">
 					Skin Color: {store.people[params.id].skin_color}
 				</div>
-				<div className="col-12 col-md-4 border rounded shadow py-3">
+				<div className="col-12 col-md-4 border  py-3">
 					 Birth Year: {store.people[params.id].birth_year}
 				</div>
-				<div className="col-12 col-md-4 border rounded shadow py-3">
+				<div className="col-12 col-md-4 border  py-3">
 					 Height: {store.people[params.id].height} cm
 				</div>
 			</div>
-			<div className="row">
 				<Link to="/">
-					<span className="btn btn-dark btn-lg" href="#" role="button">
-						Back home
-					</span>
+					<button className="btn btn-primary btn-lg" href="#" type="button">
+					<i className="fas fa-arrow-alt-circle-left"></i>
+					</button>
 				</Link>
-			</div>
 		</div>
+			
+			
 	);
 };
 PeopleDetails.propTypes = {

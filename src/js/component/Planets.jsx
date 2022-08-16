@@ -3,17 +3,16 @@ import "../../styles/index.css";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
+import planetas from "../img/planetas.jpg"
 
 export const Planets = props => {
   const { store, actions } = useContext(Context);
   return (
     <>
-      <div className="people mt-5">
-        <div className="row">
-          <div className="card col">
-            <img className="card-img-top" src="https://talbottinn.com/wp-content/uploads/2013/11/dummy-image-square.jpg"></img>
-            <div className="card-body">
-              <h5 className="card-title"><strong>Planet Name:</strong> {props.name}</h5>
+      <div className="card mx-3 mb-4">
+        <img src={ planetas } className="card-img-top" alt="..." />
+        <div className="card-body">
+              <h5 className="card-title"><strong>{props.name}</strong></h5>
               <p className="card-text">
                 <strong>Diameter:</strong> {props.diameter}
               </p>
@@ -27,9 +26,9 @@ export const Planets = props => {
                 <strong>Terrain:</strong> {props.terrain}
               </p>
               <div className="row">
-                <div className="col-6">
+                <div className="botones">
                   <Link to={`/PlanetsDetails/${props.id}`}>
-                    <div className="btn btn-dark">Learn More</div>
+                  <button className="btn btn-primary" type="button">Ver Detalles</button>
                   </Link>
                   <div className="favorite-icon">
                     <div onClick={() => actions.addFavorite(props.name)}>
@@ -41,19 +40,17 @@ export const Planets = props => {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
       </div>
     </>
   );
 };
 
 Planets.propTypes = {
-	name: PropTypes.string,
-	diameter: PropTypes.string,
-	population: PropTypes.string,
-	terrain: PropTypes.string,
+  name: PropTypes.string,
+  diameter: PropTypes.string,
+  population: PropTypes.string,
+  terrain: PropTypes.string,
   climate: PropTypes.string,
-	id: PropTypes.number,
-	url: PropTypes.string
+  id: PropTypes.number,
+  url: PropTypes.string
 };

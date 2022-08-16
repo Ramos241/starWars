@@ -8,12 +8,15 @@ export const Navbar = () => {
 
   return (
     <nav className="navbar navbar-light bg-light mb-3">
-      <Link to="/">
-        <img
-          className="navbar-logo"
-          src="https://pngimg.com/uploads/star_wars_logo/star_wars_logo_PNG18.png"
-        ></img>
-      </Link>
+      <div>
+        <Link to="/">
+          <img
+            className="navbar-logo"
+            src="https://pngimg.com/uploads/star_wars_logo/star_wars_logo_PNG18.png"
+          ></img>
+        </Link>
+        <Link className="link mx-3 text-black-50" to="/demo" >Vehicles</Link>
+      </div>
       <div className="col-6 col-lg-3">
         <div className="d-inline nav-item dropdown">
           <button
