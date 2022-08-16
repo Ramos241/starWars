@@ -7,7 +7,7 @@ export const Navbar = () => {
   const { store, actions } = useContext(Context);
 
   return (
-    <nav className="navbar navbar-light bg-light mb-3">
+    <nav className="navbar navbar-light bg-light mb-3 fixed-top">
       <div>
         <Link to="/">
           <img
@@ -42,7 +42,7 @@ export const Navbar = () => {
                         className="badge badge-danger text-white"
                         onClick={() => actions.removeFavorite(index)}
                       >
-                        <i class="fa-solid fa-trash-can"></i>
+                        <i className="fa-solid fa-trash-can"></i>
                       </a>
                     </div>
                   </div>
@@ -55,3 +55,4 @@ export const Navbar = () => {
     </nav>
   );
 };
+

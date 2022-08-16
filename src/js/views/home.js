@@ -9,7 +9,7 @@ export const Home = () => {
 	const { store, actions } = useContext(Context);
 	return (
 	<>
-		<div className="container mb-5 pb-5">
+		<div className="container mb-5 pb-5 pt-5">
 			<div className="col-12 mt-5 mb-3">
 				<h1 className="title">People</h1>
 			</div>

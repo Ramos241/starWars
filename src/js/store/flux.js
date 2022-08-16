@@ -1,36 +1,66 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			planets: [],
+			urlBase: "https://swapi.dev/api/",
+			urlPeople: "people/",
+			urlPlanets: "planets/",
+			urlVehicles: "vehicles",
 			people: [],
+			planets: [],
+			vehicles: [],
 			favorites: [],
-			vehicles: []
+			
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
-			// exampleFunction: () => {
-			// 	getActions().changeColor(0, "green");
-			// },
+
 			loadPeople: async () => {
-				const url = "https://swapi.dev/api/people/";
-				let response = await fetch(url);
-				const data = await response.json();
-				setStore({ people: data.results });
+				const store = getStore()
+				try {
+					let response = await fetch(`${store.urlBase}${store.urlPeople}`)
+					if(response.ok){
+						let data = await response.json()
+						if(response.status != 404){
+							setStore({...setStore,
+								people: data.results})
+						}
+					}
+				} catch (error) {
+					console.log(error)
+				}
 			},
 
 			loadPlanets: async () => {
-				const url = "https://swapi.dev/api/planets/";
-				let response = await fetch(url);
-				const data = await response.json();
-				setStore({ planets: data.results });
+				const store = getStore()
+				try {
+					let response = await fetch(`${store.urlBase}${store.urlPlanets}`)
+					if(response.ok){
+						let data = await response.json()
+						if(response.status != 404){
+							setStore({...store,
+								planets: data.results})
+						}
+					}
+				} catch (error) {
+					console.log(error)
+				}
 			},
 
-			loadVehicles: async () => {
-				const url = "https://swapi.dev/api/vehicles/";
-				let response = await fetch(url);
-				const data = await response.json();
-				setStore({ vehicles: data.results });
-			},			
+			loadVehicles: async ()=> {
+				const store = getStore()
+				try {
+					let response = await fetch(`${store.urlBase}${store.urlVehicles}`)
+					if (response.ok){
+					let data = await response.json()
+						if(response.status != 404){
+							setStore({...store,
+								vehicles: data.results})
+						}
+					}
+
+				} catch (error) {
+					
+				}
+			},
 
 			addFavorite: name => {
 				let count = 0;
@@ -51,13 +81,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 				}
 			},
+
 			removeFavorite: id => {
 				const store = getStore();
 				const newFavorites = store.favorites.filter((item, i) => i !== id);
 				setStore({ favorites: newFavorites });
-			}
+			},		
+			
+			
 		}
 	};
 };
 
 export default getState;
+
